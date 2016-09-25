@@ -23,9 +23,18 @@ define([
     validate: function(attrs, options) {
     },
 
-    parse: function(response, options)  {
-      console.log(response);
-      return response;
+    parse: function(game, options)  {
+      console.log(game);
+      // console.log(game.category_scores);  
+      // replace single quotes with double quotes.
+      var updated = game.category_scores.replace(/\'/g, '"');
+      var scores = JSON.parse(updated);
+      console.log(scores);
+      console.log(scores.FIVES);    
+      
+      game.category_scores = scores;
+      console.log(game);
+      return game;
     }
   });
 

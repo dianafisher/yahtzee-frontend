@@ -4,10 +4,10 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'templates',
-  'collections/user',
-  'collections/game' 
-], function ($, _, Backbone, JST, Users, Games) {
+  'templates',  
+  'collections/game',
+  'views/game' 
+], function ($, _, Backbone, JST, Games, GameView) {
   'use strict';
 
   var HomeView = Backbone.View.extend({
@@ -20,51 +20,54 @@ define([
     className: 'home-view',
 
     events: {
-      'submit' : 'createUser'
+      'submit' : 'createGame'
     },
 
-    initialize: function () {
-      this.users = new Users();
-      this.users.fetch();
-
-      var games = new Games();
-      games.fetch();
+    initialize: function () {      
+      this.games = new Games();
+      this.games.fetch();
     },
 
     render: function () {
       this.$el.html(this.template());
       return this;
-    },
-
-    createUser: function(e) {
-      e.preventDefault();
-      var username = this.$('#input-name').val().trim();
-      console.log(username);
-      var email = this.$('#input-email').val().trim();
-
-      // Call the API to create the new user.
-      var attributes = {
-        user_name: username,
-        email: email
-      };
-      this.users.create(attributes);
-    },
+    },    
 
     createGame: function(e) {
       e.preventDefault();
       console.log('createGame button pressed');
-      // call API..
-      $.ajax({
-        type: 'POST',
-        url:'https://yahtzee-1238.appspot.com/_ah/api/yahtzee/v1/game',
-        data: {'user_name' : 'dfisher'},
-        success:function(result){
-          console.log(result);
+      var username = this.$('#input-name').val().trim();
+      console.log(username);
+
+      var self = this;
+      // Call the API to create the new game.
+      var attributes = {
+        user_name: username        
+      };
+      this.games.create(attributes,{
+        success: function(result) {          
+          var gameView = new GameView( {model: result} );                  
+          var div = $('#game-view', self.el);
+          div.append(gameView.render().el);          
         },
-        error: function(){
-          console.log('error');
+        error: function() {
+          console.log('error!');
         }
       });
+
+      // // call API..
+      // $.ajax({
+      //   type: 'POST',
+      //   url:'https://yahtzee-1238.appspot.com/_ah/api/yahtzee/v1/game',
+      //   data: {'user_name' : 'dfisher'},
+      //   success:function(result){
+      //     console.log(result);
+      //   },
+      //   error: function(){
+      //     console.log('error');
+      //   }
+      // });
+
     },
   });
 

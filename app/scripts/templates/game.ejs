@@ -1,28 +1,38 @@
-<div class="jumbotron">
-    <h1>Yahtzee!</h1>
-    <p class="lead">This is the front end for the game :)</p>    
-    <p><button id="submit-btn" type="submit" class="btn btn-success">Let's Play!</button></p>    
-
-    <form class="form-horizontal">
-        <div class="form-group" id="name-group">
-            <label for="input-name" class="col-lg-2 control-label">Name</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" id="input-name" placeholder="Name" autofocus required autocomplete="name">
-                <p class="help-block" id="email-help"></p>
-            </div>
-        </div>
-        <div class="form-group" id="email-group">
-            <label for="input-email" class="col-lg-2 control-label">Email Address</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" id="input-email" placeholder="Email Address" required autocomplete="email">
-                <p class="help-block" id="email-help"></p>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-10 col-lg-offset-5">
-                <button id="submit-btn" type="submit" class="btn btn-success">Create User</button>
-            </div>
-        </div>
-    </form>
+<div>
+    <h5>Upper Section</h5>
+    <p></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ACES</td>
+                <td><%= category_scores.ACES %></td>
+            </tr>
+            <tr>
+                <td>TWOS</td>
+                <td><%= category_scores.TWOS %></td>
+            </tr>
+            <tr>
+                <td>THREES</td>
+                <td><%= category_scores.THREES %></td>
+            </tr>
+            <tr>
+                <td>FOURS</td>
+                <td><%= category_scores.FOURS %></td>
+            </tr>
+            <tr>
+                <td>FIVES</td>
+                <td><%= category_scores.FIVES %></td>
+            </tr>
+            <tr>
+                <td>SIXES</td>
+                <td><%= category_scores.SIXES %></td>
+            </tr>
+        </tbody>
+    </table>    
 </div>
-

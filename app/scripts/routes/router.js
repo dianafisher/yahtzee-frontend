@@ -17,7 +17,7 @@ define([
 
     initialize: function() {
         // Grab the div for the app.
-        this.$app = $('#gameView');
+        this.$app = $('#homeView');
     },
 
     index: function() {

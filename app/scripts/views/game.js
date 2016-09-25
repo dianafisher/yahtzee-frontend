@@ -28,7 +28,7 @@ define([
     render: function () {
       // this.$el.html(this.template(this.model.toJSON()));
       console.log('GameView render...');
-      this.$el.html(this.template());
+      this.$el.html(this.template(this.model.attributes));
       return this;
     },              
 

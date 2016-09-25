@@ -5,14 +5,17 @@ define([
   'backbone',
   'views/home',
   'views/users',
-  'collections/user'
-], function ($, Backbone, HomeView, UsersView, UserCollection) {
+  'views/games',
+  'collections/user',
+  'collections/game'
+], function ($, Backbone, HomeView, UsersView, GamesView, UserCollection, GameCollection) {
   'use strict';
 
   var RouterRouter = Backbone.Router.extend({
     routes: {
         '' : 'index',
-        'users': 'showUsers'
+        'users': 'showUsers',
+        'games': 'showGames'
     },
 
     initialize: function() {
@@ -34,6 +37,12 @@ define([
       
       var usersView = new UsersView({collection: users});
       this.showView(usersView);
+    },
+
+    showGames: function() {
+      var games = new GameCollection();
+      var gamesView = new GamesView({collection: games});
+      this.showView(gamesView);
     },
 
     showView: function(view) {

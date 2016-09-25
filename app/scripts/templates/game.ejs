@@ -1,6 +1,5 @@
-<div>
-    <h5>Upper Section</h5>
-    <p></p>
+<div class="panel panel-default">
+    <div class="panel-heading">Scorecard for <%= user_name %></div>    
     <table class="table">
         <thead>
             <tr>
@@ -33,6 +32,54 @@
                 <td>SIXES</td>
                 <td><%= category_scores.SIXES %></td>
             </tr>
+            <tr>
+                <td>THREE OF A KIND</td>
+                <td><%= category_scores.THREE_OF_A_KIND %></td>
+            </tr>
+            <tr>
+                <td>FOUR OF A KIND</td>
+                <td><%= category_scores.FOUR_OF_A_KIND %></td>
+            </tr>
+            <tr>
+                <td>FULL HOUSE</td>
+                <td><%= category_scores.FULL_HOUSE %></td>
+            </tr>
+            <tr>
+                <td>SMALL STRAIGHT</td>
+                <td><%= category_scores.SMALL_STRAIGHT %></td>
+            </tr>
+            <tr>
+                <td>LARGE STRAIGHT</td>
+                <td><%= category_scores.LARGE_STRAIGHT %></td>
+            </tr>
+            <tr>
+                <td>YAHTZEE</td>
+                <td><%= category_scores.YAHTZEE %></td>
+            </tr>
+            <tr>
+                <td>CHANCE</td>
+                <td><%= category_scores.CHANCE %></td>
+            </tr>
         </tbody>
+    </table>    
+</div>
+<div class="panel panel-success">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Upper Section Total</th>
+                <th>Upper Bonus</th>
+                <th>Yahtzee Bonus</th>
+                <th>Final Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= upper_section_total %></td>
+                <td><%= bonus_points %></td>
+                <td><%= yahtzee_bonus_count %></td>
+                <td><%= final_score %></td>
+            </tr>
+        </tbody>   
     </table>    
 </div>

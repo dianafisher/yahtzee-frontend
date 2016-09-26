@@ -15,36 +15,50 @@ define([
     routes: {
         '' : 'index',
         'users': 'showUsers',
-        'games': 'showGames'
+        'games': 'showGames',
+        'games/show/:id' : 'showGame'
     },
 
     initialize: function() {
         // Grab the div for the app.
         this.$app = $('#homeView');
+        this.users = new UserCollection();
+        this.games = new GameCollection();
     },
 
+    // Home page
     index: function() {
         console.log('Creating new home view..');
         var homeView = new HomeView();
 
         this.showView(homeView);
-        // var gameView = new GameView();        
-        // this.$app.html(gameView.render().el);
     },
 
+    // Users pages
     showUsers: function() {
-      var users = new UserCollection();
+      // var users = new UserCollection();
       
-      var usersView = new UsersView({collection: users});
+      var usersView = new UsersView({collection: this.users});
       this.showView(usersView);
     },
 
+    // Games page
     showGames: function() {
-      var games = new GameCollection();
-      var gamesView = new GamesView({collection: games});
+      // var games = new GameCollection();
+      var gamesView = new GamesView({collection: this.games});
       this.showView(gamesView);
     },
 
+    // Individual game page
+    showGame: function(urlsafekey) {
+      var game = this.games.get(urlsafekey);
+      console.log(game);
+      if (game) {
+
+      }
+    },
+
+    // Helper method to swap views.
     showView: function(view) {
       if (this.currentView) {
         this.currentView.remove();

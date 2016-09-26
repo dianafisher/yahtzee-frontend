@@ -1,5 +1,12 @@
 <div class="panel panel-default">
-    <div class="panel-heading">Scorecard for <%= user_name %></div>    
+    <div class="panel-heading">Scorecard for <%= user_name %>
+    <p>Turns Remaining: <%= 13 - turn_count %></p>
+    <% if (!game_over) { %>
+        <div class="col-lg-10 col-lg-offset-2">
+            <p><a class="app-btn btn btn-sml btn-primary pull-right" href="#games/show/<%= urlsafe_key %>">Resume</a></p>
+        </div>
+    <% } %>
+    </div>    
     <table class="table">
         <thead>
             <tr>
@@ -32,6 +39,24 @@
                 <td>SIXES</td>
                 <td><%= category_scores.SIXES %></td>
             </tr>
+        <tbody>
+    </table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Upper Section Total</th>
+                <th>Upper Section Bonus</th>                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= upper_section_total %></td>
+                <td><%= bonus_points %></td>
+            </tr>
+        </tbody>   
+    </table>    
+    <table class="table">
+        <tbody>
             <tr>
                 <td>THREE OF A KIND</td>
                 <td><%= category_scores.THREE_OF_A_KIND %></td>
@@ -51,32 +76,26 @@
             <tr>
                 <td>LARGE STRAIGHT</td>
                 <td><%= category_scores.LARGE_STRAIGHT %></td>
+            </tr>            
+            <tr>
+                <td>CHANCE</td>
+                <td><%= category_scores.CHANCE %></td>
             </tr>
             <tr>
                 <td>YAHTZEE</td>
                 <td><%= category_scores.YAHTZEE %></td>
             </tr>
-            <tr>
-                <td>CHANCE</td>
-                <td><%= category_scores.CHANCE %></td>
-            </tr>
         </tbody>
     </table>    
-</div>
-<div class="panel panel-success">
     <table class="table">
         <thead>
             <tr>
-                <th>Upper Section Total</th>
-                <th>Upper Bonus</th>
                 <th>Yahtzee Bonus</th>
                 <th>Final Score</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><%= upper_section_total %></td>
-                <td><%= bonus_points %></td>
                 <td><%= yahtzee_bonus_count %></td>
                 <td><%= final_score %></td>
             </tr>

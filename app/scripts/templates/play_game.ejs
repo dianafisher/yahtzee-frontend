@@ -1,12 +1,20 @@
-<div class="panel panel-default">
-    <div class="panel-heading">Scorecard for <%= user_name %>
-    <p>Turns Remaining: <%= 13 - turn_count %></p>
-    <% if (!game_over) { %>
-        <div class="col-lg-10 col-lg-offset-2">
-            <p><a class="app-btn btn btn-sml btn-primary pull-right" href="#game/<%= urlsafe_key %>">Resume</a></p>
-        </div>
-    <% } %>
-    </div>    
+
+<div class="col-lg-7">
+    <div class="dice" id="die-one"></div>
+    <div class="dice" id="die-two"></div>
+    <div class="dice" id="die-three"></div>
+    <div class="dice" id="die-four"></div>
+    <div class="dice" id="die-five"></div>   
+    <ul class="roll-result">            
+            
+    </ul> 
+    <p>
+    <div>
+        <button id="roll-dice" type="button" class="btn btn-default">Roll Dice</button>
+    </div>
+    </p>
+</div>
+<div class="col-lg-5 scorecard">
     <table class="table">
         <thead>
             <tr>
@@ -86,3 +94,5 @@
         <tbody>
     </table>        
 </div>
+
+

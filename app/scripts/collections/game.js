@@ -12,7 +12,7 @@ define([
     url: 'http://localhost:12080/_ah/api/yahtzee/v1/game',
 
     parse: function(response) {
-        console.log(response);
+        // console.log(response);
         return response.games;
     }
     

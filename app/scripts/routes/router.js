@@ -6,9 +6,10 @@ define([
   'views/home',
   'views/users',
   'views/games',
+  'views/play_game',
   'collections/user',
   'collections/game'
-], function ($, Backbone, HomeView, UsersView, GamesView, UserCollection, GameCollection) {
+], function ($, Backbone, HomeView, UsersView, GamesView, PlayGameView, UserCollection, GameCollection) {
   'use strict';
 
   var RouterRouter = Backbone.Router.extend({
@@ -16,7 +17,7 @@ define([
         '' : 'index',
         'users': 'showUsers',
         'games': 'showGames',
-        'games/show/:id' : 'showGame'
+        'game/:id' : 'showGame'
     },
 
     initialize: function() {
@@ -44,6 +45,7 @@ define([
 
     // Games page
     showGames: function() {
+      console.log('showGames..');
       // var games = new GameCollection();
       var gamesView = new GamesView({collection: this.games});
       this.showView(gamesView);
@@ -54,7 +56,8 @@ define([
       var game = this.games.get(urlsafekey);
       console.log(game);
       if (game) {
-
+        var view = new PlayGameView({model: game});
+        this.showView(view);
       }
     },
 
@@ -63,6 +66,7 @@ define([
       if (this.currentView) {
         this.currentView.remove();
       }
+      console.log('Calling view.render()');
       this.$app.html(view.render().el);
       this.currentView = view;
     }

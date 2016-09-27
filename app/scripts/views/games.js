@@ -26,9 +26,10 @@ define([
     },
     
     render: function () {
+      console.log('render GamesView');
       this.$el.html(this.template());
       console.log(this.collection.models);
-      _.each(this.collection.models, function(game){
+      _.each(this.collection.models, function(game){          
           console.log(game);
           var view = new GameView( {model: game} );
           var list = $('game-list', this.el);

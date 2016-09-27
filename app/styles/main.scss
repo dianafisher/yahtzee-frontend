@@ -89,3 +89,31 @@ body {
     border-bottom: 0;
   }
 }
+
+ul {
+  list-style: none;
+}
+
+.dice {
+  width:51px;
+  height:50px;
+  margin: 10px;
+}
+#die-one {
+  background: url('../images/dado-1.png');
+}
+#die-two {
+  background: url('../images/dado-2.png');
+}
+#die-three {
+  background: url('../images/dado-3.png');
+}
+#die-four {
+  background: url('../images/dado-4.png');
+}
+#die-five {
+  background: url('../images/dado-5.png');
+}
+#die-six {
+  background: url('../images/dado-6.png');
+}
